@@ -1,101 +1,74 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import React from 'react'
+import Typed from 'typed.js';
+import Link from 'next/link';
+
+
+const HomePage = () => {
+  const el = React.useRef(null);
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['<h1>Shrisant_Academy<h1>'],
+      typeSpeed: 50,
+      loop: true,
+    });
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>      
+    <div className='flex flex-col gap-16'>
+      <div className='flex md:flex-row flex-col justify-center items-center h-[80vh] md:gap-28'>
+        <div>
+          <img src="https://images.pexels.com/photos/34600/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" alt="not found" className='md:h-[50vh] md:w-[40vw] h-[20vh] w-[50vw]' />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className='w-[45vw]'>
+          <h1 className='flex md:flex-row flex-col gap-2 items-end text-3xl'>
+          <span className='first-letter:text-5xl md:text-3xl text-2xl'>Welcome to</span>
+          <span ref={el} />                    
+          </h1>     
+          <p>It is the platform for the people who want to learn programming from scratch.Here you can find the content about programming languages and other technical things</p>
+          <button className='bg-blue-600 px-4 py-2 font-bold'><Link href={'/blogs'}>Learn now</Link></button>
+        </div>
+      </div>
+      <div className='w-[90vw] flex md:flex-row flex-col justify-around items-center'>          
+        <div>
+          <img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=600" alt="not found" className='md:w-[25vw] md:h-[70vh] h-[40vh] w-[50vw]' />
+        </div>
+        <div className='w-[20vw] flex flex-col justify-center items-center'>
+          <h1 className='text-2xl'>Programming</h1>
+          <p className='text-justify text-xl w-[50vw]'>Programming is the process of designing and building an executable computer software to accomplish a specific computing task. It involves writing code in one or more programming languages to create a set of instructions that a computer can follow to perform specific operations. Here are some key aspects of programming:</p>
+        </div>
+      </div>
+      <div className='w-[90vw] flex md:flex-row-reverse flex-col justify-around items-center'>
+        <div>
+          <img src="https://images.pexels.com/photos/326515/pexels-photo-326515.jpeg?auto=compress&cs=tinysrgb&w=600" alt="not found" className='md:w-[25vw] md:h-[70vh]  h-[40vh] w-[50vw]' />
+        </div>
+        <div className='w-[20vw] flex flex-col justify-center items-center'>
+          <h1 className='text-2xl'>Web Development</h1>
+          <p className='text-justify text-xl w-[50vw]'>Web development is the process of creating websites and web applications for the internet. It involves a combination of programming, design, and content creation. Key technologies include HTML , CSS , and JavaScript , which are used to structure, style, and add interactivity to web pages. 
+            Backend development involves server-side languages like Python , Ruby , and PHP , along with databases such as MySQL  and MongoDB .
+          </p>
+        </div>
+        
+      </div>
+      <div className='flex flex-col gap-8'>
+        <h1 className='text-center text-4xl font-bold'>Items</h1>
+        <div className='flex flex-wrap gap-8 justify-around'>
+        <img src="https://th.bing.com/th/id/OIP.97K8zwODMBDaPq09oQLvcwHaHa?w=201&h=200&c=7&r=0&o=5&pid=1.7" alt="not found" className='w-[150px] h-[122px] hover:h-[169px] hover:w-[180px] rounded-2xl cursor-pointer'/>
+        <img src="https://ts3.mm.bing.net/th?id=OIP.Yk567-BTb3qeDgFqOGU6RwHaFj&pid=15.1" alt="not found" className='w-[150px] h-[122px] hover:h-[169px] hover:w-[180px] rounded-2xl cursor-pointer'/>
+        <img src="https://th.bing.com/th?q=CSS+Logo+Transparent+Background&w=120&h=120&c=1&rs=1&qlt=90&cb=1&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="not found"  className='w-[150px] h-[122px] hover:h-[169px] hover:w-[180px] rounded-2xl cursor-pointer'/>
+        <img src="https://th.bing.com/th/id/OIP.5W93bojlueDZvd0c22CtigHaHa?w=182&h=182&c=7&r=0&o=5&pid=1.7" alt="not found" className='w-[150px] h-[122px] hover:h-[169px] hover:w-[180px] rounded-2xl cursor-pointer'/>
+        <img src="https://th.bing.com/th/id/OIP.rrUx8smzGQP5_uhdcwEcMwHaHa?w=186&h=186&c=7&r=0&o=5&pid=1.7" alt="not found" className='w-[150px] h-[122px] hover:h-[169px] hover:w-[180px] rounded-2xl cursor-pointer'/>
+        </div>
+      </div>
+
+      </div>
+    </>
   );
-}
+};
+
+export default HomePage;
